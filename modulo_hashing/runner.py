@@ -1,5 +1,7 @@
+import math
+
 from modulo_hashing import ModuloHashingBenchmark
-import logger
+from base import logger
 
 
 def main(number_of_nodes=15, dataset_size=10**5):
@@ -8,7 +10,7 @@ def main(number_of_nodes=15, dataset_size=10**5):
     log.info("Number of nodes - {}".format(number_of_nodes))
     log.info("Dataset Size - {}".format(dataset_size))
 
-    mhb = ModuloHashingBenchmark(number_of_nodes=number_of_nodes)
+    mhb = ModuloHashingBenchmark(number_of_nodes=number_of_nodes, cache_size=dataset_size)
     keys = range(0, dataset_size)
 
     init_benchmark_data(keys, mhb)
@@ -19,6 +21,15 @@ def main(number_of_nodes=15, dataset_size=10**5):
     mhb.add_node()
     check_cache_miss(keys, mhb)
     mhb.remove_node()
+    check_cache_miss(keys, mhb)
+    check_cache_miss(keys, mhb)
+    mhb.add_node()
+    check_cache_miss(keys, mhb)
+    check_cache_miss(keys, mhb)
+    mhb.add_node()
+    check_cache_miss(keys, mhb)
+    mhb.remove_node()
+    check_cache_miss(keys, mhb)
     check_cache_miss(keys, mhb)
 
 

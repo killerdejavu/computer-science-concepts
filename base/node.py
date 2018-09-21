@@ -3,9 +3,10 @@ import random
 
 class Node(object):
 
-    def __init__(self, name, ip):
+    def __init__(self, name, ip, cache_size):
         self.name = name
         self.ip = ip
+        self.cache_size = cache_size
         self.cache = dict()
 
     def __repr__(self):
@@ -13,6 +14,9 @@ class Node(object):
 
     def _add_value(self, key):
         self.cache[key] = self._get_random_value()
+        if len(self.cache) > self.cache_size:
+            self.cache.pop(random.choice(self.cache.keys()))
+        assert len(self.cache) <= self.cache_size
 
     @staticmethod
     def _get_random_value():

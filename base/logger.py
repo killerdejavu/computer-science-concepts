@@ -1,4 +1,8 @@
 import logging
+import coloredlogs
+
+coloredlogs.install(level='DEBUG')
+
 
 FORMAT = '%(asctime)-15s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(format=FORMAT, level=logging.INFO, datefmt='%Y-%m-%dT%H:%M:%S')

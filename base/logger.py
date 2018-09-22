@@ -1,7 +1,7 @@
 import logging
 import coloredlogs
 
-coloredlogs.install(level='INFO')
+coloredlogs.install(level='DEBUG')
 
 
 FORMAT = '%(name)s - %(levelname)s - %(message)s'

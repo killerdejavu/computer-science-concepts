@@ -13,7 +13,7 @@ def main(number_of_nodes=15, dataset_size=10 ** 5, number_of_virtual_nodes=1):
     log.info("NUMBER OF VIRTUAL NODES: {}".format(number_of_virtual_nodes))
     log.info("NUMBER OF TOTAL NODES: {} * {} = {}".format(number_of_nodes, number_of_virtual_nodes, number_of_nodes*number_of_virtual_nodes))
 
-    mhb = ConsistentHashingBenchmark(number_of_nodes=number_of_nodes, cache_size=int(math.ceil(dataset_size/(number_of_nodes-1))), number_of_virtual_nodes=number_of_virtual_nodes)
+    mhb = ConsistentHashingBenchmark(number_of_nodes=number_of_nodes, cache_size=int(math.ceil(dataset_size * 1.2/(number_of_nodes-1))), number_of_virtual_nodes=number_of_virtual_nodes)
     keys = range(0, dataset_size)
 
     init_benchmark_data(keys, mhb)

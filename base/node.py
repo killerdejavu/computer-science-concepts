@@ -8,6 +8,7 @@ class Node(object):
         self.ip = ip
         self.cache_size = cache_size
         self.cache = dict()
+        self.virtual_node_locations = []
 
     def __repr__(self):
         return "{} - {} - {}".format(self.name, self.ip, self.cache)
